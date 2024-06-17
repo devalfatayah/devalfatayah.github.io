@@ -29,7 +29,7 @@ const Blog = ({ posts }) => {
   }, []);
 
   const createBlog = () => {
-    if (process.env.NODE_ENV === "development") {
+    if (process.env.NEXT_PUBLIC_DEV === "development") {
       fetch("/api/blog", {
         method: "POST",
         headers: {
@@ -44,7 +44,7 @@ const Blog = ({ posts }) => {
   };
 
   const deleteBlog = (slug) => {
-    if (process.env.NODE_ENV === "development") {
+    if (process.env.NEXT_PUBLIC_DEV === "development") {
       fetch("/api/blog", {
         method: "DELETE",
         headers: {
@@ -98,7 +98,7 @@ const Blog = ({ posts }) => {
                     <span className="text-sm mt-5 opacity-25">
                       {ISOToDate(post.date)}
                     </span>
-                    {process.env.NODE_ENV === "development" && mounted && (
+                    {process.env.NEXT_PUBLIC_DEV === "development" && mounted && (
                       <div className="absolute top-0 right-0">
                         <Button
                           onClick={(e) => {
@@ -116,7 +116,7 @@ const Blog = ({ posts }) => {
             </div>
           </div>
         </div>
-        {process.env.NODE_ENV === "development" && mounted && (
+        {process.env.NEXT_PUBLIC_DEV === "development" && mounted && (
           <div className="fixed bottom-6 right-6">
             <Button onClick={createBlog} type={"primary"}>
               Add New Post +{" "}

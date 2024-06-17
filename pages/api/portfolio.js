@@ -3,7 +3,7 @@ import { join } from "path";
 
 export default function handler(req, res) {
   const portfolioData = join(process.cwd(), "/data/portfolio.json");
-  if (process.env.NODE_ENV === "development") {
+  if (process.env.NEXT_PUBLIC_DEV === "development") {
     if (req.method === "POST") {
       fs.writeFileSync(
         portfolioData,
